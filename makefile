@@ -3,6 +3,7 @@ WIN=x86_64-w64-mingw32-g++
 CFLAGS=-Wall
 
 TARGET=trade
+#P=./
 P=Builds/
 
 #Linux compilation

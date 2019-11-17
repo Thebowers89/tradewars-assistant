@@ -332,6 +332,8 @@ void list() {
             cout << "Valid options are:\nsectors\nstations\nplanets\n(q)uit" << endl;
         } else if (input == "q") {
             return;
+        } else if (input == "adjacent") {
+            listAdjacent();
         } else {
             cout << "Invalid input!" << endl;
         }
@@ -356,7 +358,18 @@ void info() {
         cout << "\tSector is not on map..." << endl;
     }
     if (stations.count(i)) {
-        cout << "\tStation " << i << ": " << stations[i] << endl;
+        cout << "\tStation " << i << " : " << stations[i] << endl;
+        cout << "\t\tAdjacent stations:" << endl;
+        bool found = false;
+        for (int s : sectors[i]) {
+            if (stations.count(s)) {
+                found = true;
+                cout << "\t\t" << s << " : " << stations[s] << endl;
+            }
+        }
+        if (!found) {
+            cout << "\t\tNo adjacent stations known" << endl;
+        }
     } else {
         cout << "\tNo known station in sector..." << endl;
     }
